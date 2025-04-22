@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>恋活★くじ</title>
+  <style>
+    body {
+      font-family: 'sans-serif';
+      background: #ffeaf0;
+      text-align: center;
+      padding: 2em;
+    }
+    .box {
+      background: white;
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: inline-block;
+    }
+    .result {
+      margin-top: 1.5em;
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+    .button {
+      background: hotpink;
+      color: white;
+      border: none;
+      padding: 1em 2em;
+      font-size: 1.2em;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1em;
+    }
+    .app-link {
+      margin-top: 1em;
+      display: block;
+      font-size: 1.1em;
+      color: #333;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>恋活★運命くじ</h1>
+    <p>運命のマッチングアプリに出会える…！？</p>
+    <button class="button" onclick="drawKujii()">くじを引く！</button><div class="result" id="resultBox"></div>
+<a id="appLink" class="app-link" href="#" target="_blank"></a>
+
+  </div>  <script>
+    const kujiResults = [
+      {
+        app: 'ペアーズ',
+        message: 'やっと見つけたよ、君を待ってた。',
+        link: 'https://example.com/pairs-affiliate'
+      },
+      {
+        app: 'Omiai',
+        message: 'そろそろ、本気の恋、始めようか。',
+        link: 'https://example.com/omiai-affiliate'
+      },
+      {
+        app: 'タップル',
+        message: 'え、絶対気が合うって！今すぐ話そ？',
+        link: 'https://example.com/tapple-affiliate'
+      },
+      {
+        app: 'Tinder',
+        message: '気になった。君みたいな人に、出会ったことない。',
+        link: 'https://example.com/tinder-affiliate'
+      },
+      {
+        app: 'youbride',
+        message: '焦らなくていい。でも、君には幸せになってほしいんだ。',
+        link: 'https://example.com/youbride-affiliate'
+      }
+    ];
+
+    function drawKujii() {
+      const result = kujiResults[Math.floor(Math.random() * kujiResults.length)];
+      document.getElementById('resultBox').textContent = `【${result.app}】 ${result.message}`;
+      const link = document.getElementById('appLink');
+      link.href = result.link;
+      link.textContent = `${result.app}に登録してみる！`;
+    }
+  </script></body>
+</html>

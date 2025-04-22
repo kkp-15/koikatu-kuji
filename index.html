@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="ja">
+<!DOCTYPE html>
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       display: inline-block;
+      max-width: 90%;
     }
     .result {
       margin-top: 1.5em;
@@ -31,6 +33,7 @@
       border-radius: 8px;
       cursor: pointer;
       margin-top: 1em;
+      display: inline-block;
     }
     .app-link {
       margin-top: 1em;
@@ -45,10 +48,14 @@
   <div class="box">
     <h1>恋活★運命くじ</h1>
     <p>運命のマッチングアプリに出会える…！？</p>
-    <button class="button" onclick="drawKujii()">くじを引く！</button><div class="result" id="resultBox"></div>
-<a id="appLink" class="app-link" href="#" target="_blank"></a>
+    <button class="button" onclick="drawKujii()">くじを引く！</button>
 
-  </div>  <script>
+    <div class="result" id="resultBox"></div>
+    <a id="appLink" class="app-link" href="#" target="_blank"></a>
+    <a id="shareBtn" class="button" href="#" target="_blank" style="display:none;">Xでシェアする</a>
+  </div>
+
+  <script>
     const kujiResults = [
       {
         app: 'ペアーズ',
@@ -80,9 +87,19 @@
     function drawKujii() {
       const result = kujiResults[Math.floor(Math.random() * kujiResults.length)];
       document.getElementById('resultBox').textContent = `【${result.app}】 ${result.message}`;
+      
       const link = document.getElementById('appLink');
       link.href = result.link;
       link.textContent = `${result.app}に登録してみる！`;
+
+      const tweetText = encodeURIComponent(
+        `恋活くじ結果：大吉！\n${result.message}\nおすすめアプリ：「${result.app}」\n#恋活くじ #恋愛診断`
+      );
+      const tweetUrl = `https://twitter.com/intent/tweet?text=${tweetText}&url=https://kkp-15.github.io/koikatu-kuji/`;
+      const shareBtn = document.getElementById('shareBtn');
+      shareBtn.href = tweetUrl;
+      shareBtn.style.display = 'inline-block';
     }
-  </script></body>
+  </script>
+</body>
 </html>

@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
+<!DOCTYPE html><html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,19 +47,16 @@
   <div class="box">
     <h1>恋活★運命くじ</h1>
     <p>運命のマッチングアプリに出会える…！？</p>
-    <button class="button" onclick="drawKujii()">くじを引く！</button>
+    <button class="button" onclick="drawKujii()">くじを引く！</button><div class="result" id="resultBox"></div>
+<a id="appLink" class="app-link" href="#" target="_blank"></a>
+<a id="shareBtn" class="button" href="#" target="_blank" style="display:none;">Xでシェアする</a>
 
-    <div class="result" id="resultBox"></div>
-    <a id="appLink" class="app-link" href="#" target="_blank"></a>
-    <a id="shareBtn" class="button" href="#" target="_blank" style="display:none;">Xでシェアする</a>
-  </div>
-
-  <script>
+  </div>  <script>
     const kujiResults = [
       {
-        app: 'ペアーズ',
-        message: 'やっと見つけたよ、君を待ってた。',
-        link: 'https://example.com/pairs-affiliate'
+        app: 'マリッシュ',
+        message: '大人の恋、ちゃんとはじめよう。君となら、きっと。',
+        link: 'https://px.a8.net/svt/ejp?a8mat=453G7M+4D6H96+3N2M+67C4I'
       },
       {
         app: 'Omiai',
@@ -87,7 +83,7 @@
     function drawKujii() {
       const result = kujiResults[Math.floor(Math.random() * kujiResults.length)];
       document.getElementById('resultBox').textContent = `【${result.app}】 ${result.message}`;
-      
+
       const link = document.getElementById('appLink');
       link.href = result.link;
       link.textContent = `${result.app}に登録してみる！`;
@@ -100,6 +96,5 @@
       shareBtn.href = tweetUrl;
       shareBtn.style.display = 'inline-block';
     }
-  </script>
-</body>
+  </script></body>
 </html>

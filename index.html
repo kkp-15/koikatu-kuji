@@ -1,129 +1,99 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>婚活★くじ</title>
   <style>
     body {
-      font-family: 'sans-serif';
+      font-family: sans-serif;
       background: #fff0f5;
       text-align: center;
-      padding: 2em;
+      padding: 2rem;
     }
-    .box {
-      background: white;
-      padding: 2em;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      display: inline-block;
-      max-width: 90%;
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #d63384;
     }
-    .result {
-      margin-top: 1.5em;
-      font-size: 1.3em;
-      font-weight: bold;
+    #result {
+      font-size: 1.5rem;
+      margin: 2rem 0;
+      min-height: 3rem;
     }
-    .button {
+    .btn {
+      font-size: 1.2rem;
       background: #d63384;
       color: white;
+      padding: 1rem 2rem;
       border: none;
-      padding: 1em 2em;
-      font-size: 1.2em;
       border-radius: 8px;
       cursor: pointer;
-      margin-top: 1em;
-      display: inline-block;
     }
-    .app-link {
-      margin-top: 1em;
-      display: block;
-      font-size: 1.1em;
-      color: #333;
-      text-decoration: underline;
+    .btn:hover {
+      background: #ad2670;
+    }
+    .link {
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+    .ad-banner {
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1>婚活★くじ</h1>
-    <p>本気の出会い、くじから始めよう。</p>
-    <button class="button" onclick="drawKujii()">くじを引く！</button>
-
-    <div class="result" id="resultBox"></div>
-    <a id="appLink" class="app-link" href="#" target="_blank"></a>
+  <h1>婚活★くじ</h1>
+  <button class="btn" onclick="drawFortune()">くじを引く！</button>
+  <div id="result"></div>
+  <div id="link" class="link"></div>
+  <div class="ad-banner">
+    <a href="https://px.a8.net/svt/ejp?a8mat=453GZN+FG2WKA+5NU2+5ZEMP" rel="nofollow">
+      <img border="0" width="300" height="250" alt="" src="https://www27.a8.net/svt/bgt?aid=250424771934&wid=002&eno=01&mid=s00000026417001005000&mc=1" />
+      <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=453GZN+FG2WKA+5NU2+5ZEMP" alt="" />
+    </a>
   </div>
-
   <script>
-    const kujiResults = [
+    const fortunes = [
       {
-        app: 'パートナーエージェント（EQ診断）',
-        message: 'あなたの婚活力を3分で診断！本気の婚活、始める前にチェックしよう。',
-        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+C211JU+17R0+NTZCI'
+        message: "運命の出会いがすぐそこに…チャンスを逃さないで✨",
+        link: "https://px.a8.net/svt/ejp?a8mat=453G7T+C4ER76+32P0+5YJRM"
       },
       {
-        app: 'Bridalチューリップ',
-        message: '幸せが掴める結婚相談所【Bridalチューリップ】',
-        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+C4ER76+32P0+639IQ'
+        message: "理想の相手と出会うための一歩を踏み出そう💘",
+        link: "https://px.a8.net/svt/ejp?a8mat=453G7T+C507KQ+4HMW+NTRMQ"
       },
       {
-        app: 'ヒーローマリッジ',
-        message: '魅力アップも全力サポート！男性専用の結婚相談所で理想の成婚を。',
-        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+C507KQ+4HMW+NTRMQ'
+        message: "結婚を真剣に考えるあなたへ、特別なご縁が舞い込むかも…💍",
+        link: "https://px.a8.net/svt/ejp?a8mat=453G7T+BIZ5F6+FOG+3H5BCY"
       },
       {
-        app: 'ヴィーガン婚活',
-        message: '価値観も食も大切にしたい。ヴィーガン同士の安心な出会い。',
-        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+C3TBLE+5PZA+5YJRM'
+        message: "今が行動の時！愛の女神があなたに微笑んでいます😊",
+        link: "https://px.a8.net/svt/ejp?a8mat=453G7T+BDM8Z6+17R0+TUGK2"
       },
       {
-        app: 'エンジェル',
-        message: '特許取得の性格分析で、ぴったりな相手に出会えるオンライン婚活。',
-        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+BYGF5E+2M6+IA7ZL'
+        message: "素敵な恋が始まる予感…次に開くページが運命の扉かも🔮",
+        link: "https://px.a8.net/svt/ejp?a8mat=453G7T+BDOU56+2RIS+5YJRM"
       },
       {
-        app: 'IBJ Matching（婚活パーティー）',
-        message: '個室会場・趣味コンなど多彩な出会い方で、理想の人とマッチング！',
-        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+BIZ5F6+FOG+3H5BCY'
+        message: "今こそ運命の相手との距離を縮める時！運を味方に✨",
+        link: "https://px.a8.net/svt/ejp?a8mat=453G7T+AP7HY2+17R0+614CX"
       },
       {
-        app: 'naco-do（スマホ婚活）',
-        message: '成婚率41.3%！スマホで完結できる次世代の婚活サポート。',
-        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+BZIUR6+4HHW+609HU'
+        message: "真剣な恋の始まりを感じて…次に出会う人が特別かも💕",
+        link: "https://px.a8.net/svt/ejp?a8mat=453G7T+AP7HY2+17R0+64C3M"
       },
       {
-        app: 'OTOCON（おとなの婚活）',
-        message: '真剣な人ばかりだから、カップル率が高い！落ち着いた出会いを求める方に。',
-        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+BDM8Z6+17R0+TUGK2'
-      },
-      {
-        app: 'フィオーレパーティー（婚活イベント）',
-        message: '毎週末開催！個室で落ち着いて話せる人気の婚活パーティー。',
-        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+BDOU56+2RIS+5YJRM'
-      },
-      {
-        app: 'エクセレンス青山（結婚相談所）',
-        message: '東京青山の老舗結婚相談所。経験豊富なカウンセラーが全力サポート！',
-        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+BA1O4A+V00+C7DWI'
-      },
-      {
-        app: 'マリッシュ（marrish）',
-        message: '再婚・年の差・地方婚も応援！恋活・婚活の人気アプリ。',
-        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+4D6GHE+3N2M+67JUA'
-      },
-      {
-        app: '結婚相談所比較ネット',
-        message: '一括資料請求で婚活支援金30,000円がもらえるチャンス！',
-        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+AKG13U+1PJA+2BFH02'
+        message: "無料から始める運命の恋活。今のあなたにピッタリのご縁があります💫",
+        link: "https://px.a8.net/svt/ejp?a8mat=453G7M+4D6GHE+3N2M+67JUA"
       }
     ];
 
-    function drawKujii() {
-      const result = kujiResults[Math.floor(Math.random() * kujiResults.length)];
-      document.getElementById('resultBox').textContent = `【${result.app}】 ${result.message}`;
-      const link = document.getElementById('appLink');
-      link.href = result.link;
-      link.textContent = `${result.app} にアクセスする！`;
+    function drawFortune() {
+      const index = Math.floor(Math.random() * fortunes.length);
+      const fortune = fortunes[index];
+      document.getElementById("result").textContent = fortune.message;
+      document.getElementById("link").innerHTML = `<a href="${fortune.link}" target="_blank">▶ 詳しくはこちら</a>`;
     }
   </script>
 </body>

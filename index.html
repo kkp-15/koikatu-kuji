@@ -1,12 +1,13 @@
-<!DOCTYPE html><html lang="ja">
+<!DOCTYPE html>
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>恋活★くじ</title>
+  <title>婚活★くじ</title>
   <style>
     body {
       font-family: 'sans-serif';
-      background: #ffeaf0;
+      background: #fff0f5;
       text-align: center;
       padding: 2em;
     }
@@ -24,7 +25,7 @@
       font-weight: bold;
     }
     .button {
-      background: hotpink;
+      background: #d63384;
       color: white;
       border: none;
       padding: 1em 2em;
@@ -45,56 +46,85 @@
 </head>
 <body>
   <div class="box">
-    <h1>恋活★運命くじ</h1>
-    <p>運命のマッチングアプリに出会える…！？</p>
-    <button class="button" onclick="drawKujii()">くじを引く！</button><div class="result" id="resultBox"></div>
-<a id="appLink" class="app-link" href="#" target="_blank"></a>
-<a id="shareBtn" class="button" href="#" target="_blank" style="display:none;">Xでシェアする</a>
+    <h1>婚活★くじ</h1>
+    <p>本気の出会い、くじから始めよう。</p>
+    <button class="button" onclick="drawKujii()">くじを引く！</button>
 
-  </div>  <script>
+    <div class="result" id="resultBox"></div>
+    <a id="appLink" class="app-link" href="#" target="_blank"></a>
+  </div>
+
+  <script>
     const kujiResults = [
       {
-        app: 'マリッシュ',
-        message: '大人の恋、ちゃんとはじめよう。君となら、きっと。',
-        link: 'https://px.a8.net/svt/ejp?a8mat=453G7M+4D6H96+3N2M+67C4I'
+        app: 'パートナーエージェント（EQ診断）',
+        message: 'あなたの婚活力を3分で診断！本気の婚活、始める前にチェックしよう。',
+        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+C211JU+17R0+NTZCI'
       },
       {
-        app: 'Omiai',
-        message: 'そろそろ、本気の恋、始めようか。',
-        link: 'https://example.com/omiai-affiliate'
+        app: 'Bridalチューリップ',
+        message: '幸せが掴める結婚相談所【Bridalチューリップ】',
+        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+C4ER76+32P0+639IQ'
       },
       {
-        app: 'タップル',
-        message: 'え、絶対気が合うって！今すぐ話そ？',
-        link: 'https://example.com/tapple-affiliate'
+        app: 'ヒーローマリッジ',
+        message: '魅力アップも全力サポート！男性専用の結婚相談所で理想の成婚を。',
+        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+C507KQ+4HMW+NTRMQ'
       },
       {
-        app: 'Tinder',
-        message: '気になった。君みたいな人に、出会ったことない。',
-        link: 'https://example.com/tinder-affiliate'
+        app: 'ヴィーガン婚活',
+        message: '価値観も食も大切にしたい。ヴィーガン同士の安心な出会い。',
+        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+C3TBLE+5PZA+5YJRM'
       },
       {
-        app: 'youbride',
-        message: '焦らなくていい。でも、君には幸せになってほしいんだ。',
-        link: 'https://example.com/youbride-affiliate'
+        app: 'エンジェル',
+        message: '特許取得の性格分析で、ぴったりな相手に出会えるオンライン婚活。',
+        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+BYGF5E+2M6+IA7ZL'
+      },
+      {
+        app: 'IBJ Matching（婚活パーティー）',
+        message: '個室会場・趣味コンなど多彩な出会い方で、理想の人とマッチング！',
+        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+BIZ5F6+FOG+3H5BCY'
+      },
+      {
+        app: 'naco-do（スマホ婚活）',
+        message: '成婚率41.3%！スマホで完結できる次世代の婚活サポート。',
+        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+BZIUR6+4HHW+609HU'
+      },
+      {
+        app: 'OTOCON（おとなの婚活）',
+        message: '真剣な人ばかりだから、カップル率が高い！落ち着いた出会いを求める方に。',
+        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+BDM8Z6+17R0+TUGK2'
+      },
+      {
+        app: 'フィオーレパーティー（婚活イベント）',
+        message: '毎週末開催！個室で落ち着いて話せる人気の婚活パーティー。',
+        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+BDOU56+2RIS+5YJRM'
+      },
+      {
+        app: 'エクセレンス青山（結婚相談所）',
+        message: '東京青山の老舗結婚相談所。経験豊富なカウンセラーが全力サポート！',
+        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+BA1O4A+V00+C7DWI'
+      },
+      {
+        app: 'マリッシュ（marrish）',
+        message: '再婚・年の差・地方婚も応援！恋活・婚活の人気アプリ。',
+        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+4D6GHE+3N2M+67JUA'
+      },
+      {
+        app: '結婚相談所比較ネット',
+        message: '一括資料請求で婚活支援金30,000円がもらえるチャンス！',
+        link: 'https://px.a8.net/svt/ejp?a8mat=453G7T+AKG13U+1PJA+2BFH02'
       }
     ];
 
     function drawKujii() {
       const result = kujiResults[Math.floor(Math.random() * kujiResults.length)];
       document.getElementById('resultBox').textContent = `【${result.app}】 ${result.message}`;
-
       const link = document.getElementById('appLink');
       link.href = result.link;
-      link.textContent = `${result.app}に登録してみる！`;
-
-      const tweetText = encodeURIComponent(
-        `恋活くじ結果：大吉！\n${result.message}\nおすすめアプリ：「${result.app}」\n#恋活くじ #恋愛診断`
-      );
-      const tweetUrl = `https://twitter.com/intent/tweet?text=${tweetText}&url=https://kkp-15.github.io/koikatu-kuji/`;
-      const shareBtn = document.getElementById('shareBtn');
-      shareBtn.href = tweetUrl;
-      shareBtn.style.display = 'inline-block';
+      link.textContent = `${result.app} にアクセスする！`;
     }
-  </script></body>
+  </script>
+</body>
 </html>
